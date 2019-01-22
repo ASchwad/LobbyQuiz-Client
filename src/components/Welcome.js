@@ -2,9 +2,7 @@ import React from "react";
 
 export class Welcome extends React.Component{
 
-    onClickHandleStart(){
-        props.handleStart();
-    }
+   
 
     render() {
         return (
@@ -12,7 +10,7 @@ export class Welcome extends React.Component{
                 <div id="welcomeElement">
                     <h3>With Lobby Quiz you can compare your League performance with your Lobby mates and find out the strengths and weaknesses of your Lobby.</h3>
                     <h1>Are you ready to play?</h1>
-                    <button type="button" className="btn btn-lg black-background white" onClick={this.onClickHandleStart}>Hell Yeah!</button>
+                    <button type="button" className="btn btn-lg black-background white" onClick={this.props.onClickHandleStart}>Hell Yeah!</button>
                     <br />
                     <hr class="divider"></hr>
                     <div id="recommendation">
