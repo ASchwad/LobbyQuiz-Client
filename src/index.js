@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import {Welcome} from "./components/Welcome";
+import {Question} from "./components/Question";
 
 class Game extends React.Component {
 
@@ -10,7 +11,7 @@ class Game extends React.Component {
         super(props);
         this.state = {
             players: [],
-            quiz: {},
+            questions: [],
             welcomeDone: false
         }
 
@@ -29,12 +30,12 @@ class Game extends React.Component {
         });
     };
 
-
+    
+    
     render() {
-        //const welcomeDone = this.state.welcomeDone;
         return (
             <div id="main">
-                {this.state.welcomeDone ? null : <Welcome onClickHandleStart={this.handleStart}/>}
+                {this.state.welcomeDone ? <Question results={Object.keys(this.state.questions[0].results)} question={this.state.questions[0].question}/> : <Welcome onClickHandleStart={this.handleStart}/>}
                 
             </div>
             
@@ -42,6 +43,34 @@ class Game extends React.Component {
     };
 }
 
+/*function summary (){
+    //to be continued
+    const playerCols = this.state.players.map(player =>
+        <div class="col-sm">
+            {player}
+        </div>
+    );
+    
+    
+    const kpiCols = this.state.questions.map(k =>
+        <div class="col-sm">
+            {k.kpi}
+        </div>
+    );
+    <div class="container">
+                    <div class="row">
+                        <div class="col-sm" />
+                        {playerCols}
+                    </div>
+                    <div class="row">
+                    <div class="col-sm">
+                    
+                    </div>
+                        
+                    </div>
+                </div>
+};
+*/
   
 ReactDOM.render(
     <Game />,

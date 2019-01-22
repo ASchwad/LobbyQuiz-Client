@@ -12,7 +12,7 @@ export class Welcome extends React.Component{
                     <h1>Are you ready to play?</h1>
                     <button type="button" className="btn btn-lg black-background white" onClick={this.props.onClickHandleStart}>Hell Yeah!</button>
                     <br />
-                    <hr class="divider"></hr>
+                    <hr className="divider"></hr>
                     <div id="recommendation">
                         <b>Before you start:</b>
                         <p>This Quiz uses your overall ranked solo/duo queue games. Please make sure that...</p>
