@@ -6,7 +6,7 @@ export class Welcome extends React.Component{
 
     render() {
         return (
-            <div id="main">
+            <div>
                 <div id="welcomeElement">
                     <h3>With Lobby Quiz you can compare your League performance with your Lobby mates and find out the strengths and weaknesses of your Lobby.</h3>
                     <h1>Are you ready to play?</h1>

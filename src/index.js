@@ -12,10 +12,13 @@ class Game extends React.Component {
         this.state = {
             players: [],
             questions: [],
-            welcomeDone: false
+            welcomeDone: false,
+            questionCounter: 0
         }
 
         this.handleStart = this.handleStart.bind(this);
+        this.previousQuestion = this.previousQuestion.bind(this);
+        this.nextQuestion = this.nextQuestion.bind(this);
     };
 
     handleStart() {
@@ -30,12 +33,31 @@ class Game extends React.Component {
         });
     };
 
-    
+    nextQuestion(){
+        this.setState({
+            questionCounter: (this.state.questionCounter + 1)
+        });
+    }
+
+    previousQuestion(){
+        this.setState({
+            questionCounter: (this.state.questionCounter - 1)
+        });
+    }
     
     render() {
         return (
             <div id="main">
-                {this.state.welcomeDone ? <Question results={Object.keys(this.state.questions[0].results)} question={this.state.questions[0].question}/> : <Welcome onClickHandleStart={this.handleStart}/>}
+                {this.state.welcomeDone 
+                ? <Question 
+                    questionsAmount = {this.state.questions.length - 1}
+                    counter = {this.state.questionCounter}
+                    onClickIncrease={this.nextQuestion}
+                    onClickDecrease={this.previousQuestion}
+                    players={this.state.players} 
+                    results={this.state.questions[this.state.questionCounter].results} 
+                    question={this.state.questions[this.state.questionCounter].question}/> 
+                : <Welcome onClickHandleStart={this.handleStart}/>}
                 
             </div>
             

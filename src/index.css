@@ -25,5 +25,10 @@ body {
 
 li{
     hyphens: auto; 
-    text-align: justify
+    text-align: justify;
 }
+
+#questionBody button{
+    margin-top: 10%;
+}
+
