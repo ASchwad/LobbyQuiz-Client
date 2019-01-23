@@ -5,15 +5,15 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-
 
 app.use((req, res, next) => {
     // How is allowed to access? --> Can be overwritten still
     res.header('Access-Control-Allow-Origin', '*');
     // Which Headers are allowed?
-    res.header('Access-Control-Allow-Headers', 'authorization');
+    res.header('Access-Control-Allow-Headers', '*');
     // Browser checks with OPTIONS if he can actually act methods on the target
     if(req.method === 'OPTIONS'){
         res.header('Access-Control-Allow-Methods', 'GET, PATCH, POST, DELETE');
@@ -117,17 +117,17 @@ function getStats(port, token, puuid, queue, lane){
     
  };
 
- app.get('/playQuiz', function (req, res) {
-    playQuiz(req.body).then(data => {
+ app.get('/playQuiz/:lane(*)/:queue(*)', function (req, res) {
+    playQuiz(req.params).then(data => {
         res.status(200).json({
             quiz: data
         });
     });    
  });
 
-async function playQuiz(body){
-    var queue = body.queue;
-    var lane = body.lane;
+async function playQuiz(data){
+    var queue = data.queue;
+    var lane = data.lane;
     var players = {
         summonerNames: [],
         puuids: [],
